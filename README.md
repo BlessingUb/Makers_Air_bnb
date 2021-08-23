@@ -1,2 +1,3 @@
-# Makers_Air_bnb
-new
+# Makers Air BnB
+
+An app for making and managing space bookings
