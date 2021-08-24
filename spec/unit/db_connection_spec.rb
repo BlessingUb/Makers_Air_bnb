@@ -9,9 +9,7 @@ describe DBConnection do
     end
   end
 
-  it 'runs a query' do
-    connection = DBConnection.setup('makersbnb_test')
-  
-    expect(connection.query("SELECT 1").class).to eq PG::Result
+  it 'runs a query' do  
+    expect(DBConnection.query("SELECT 1").class).to eq PG::Result
   end
 end
