@@ -1,15 +1,22 @@
 <div>
-  <form action="/authenticate" method="post">
-    <div>
+  <form action="/authenticate" method="post" id="signin-signup-form">
+    <div class="form-heading">
+      Log in to your account
+    </div>
+
+    <div class="signin-form-field">
       <label for="email">Email</label>
       <input type="email" id="email" name="email">
     </div>
 
-    <div>
+    <div class="signin-form-field">
       <label for="password">Password</label>
-      <input type="password" id="password" name="psasword">
+      <input type="password" id="password" name="password">
     </div>
 
-    <input type="submit" value="submit">
+    <div class="signin-form-field">
+    <%# <label>Submit</label> %>
+      <input type="submit" value="submit" class="signin-submit">
+    </div>
   </form>
 </div>

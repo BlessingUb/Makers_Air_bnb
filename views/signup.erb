@@ -1,20 +1,26 @@
 <div>
-  <form action="/user/create" method="post">
-    <div>
+  <form action="/user/create" method="post" id="signin-signup-form">
+    <div class="form-heading">
+      Create a new account
+    </div>
+
+    <div class="signin-form-field">
       <label for="name">Name</label>
       <input type="text" id="name" name="name">
     </div>
 
-    <div>
+    <div class="signin-form-field">
       <label for="email">Email</label>
       <input type="email" id="email" name="email">
     </div>
 
-    <div>
+    <div class="signin-form-field">
       <label for="password">Password</label>
-      <input type="password" id="password" name="psasword">
+      <input type="password" id="password" name="password">
     </div>
 
-    <input type="submit" value="submit">
+    <div class="signin-form-field">
+      <input type="submit" value="submit">
+    </div>
   </form>
 </div>

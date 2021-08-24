@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+    <title>
+      Makers BnB
+    </title>
+  </head>
+  <body>
+    <header>
+      <div id="header-text">
+        Makers BnB
+      </div>
+      <div id="sign-in-info">
+        <% if @current_user_name%>
+          <p>
+            Signed in as <%= @current_user_name %>
+          </p>
+          <a href='/logout'>logout</a>
+        <% else %>
+          <p>Not signed in
+            <a href='/signup'>sign up</a> or <a href='/login'>login</a>
+          </p>
+        <% end%>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>
