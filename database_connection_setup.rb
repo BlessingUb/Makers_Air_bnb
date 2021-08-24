@@ -1,4 +1,4 @@
-require './lib/dbconnect' # this should be path to the dbconnect class
+require './lib/db_connection'
 
 if ENV['RACK_ENV'] == 'test' 
   DBConnect.setup('makersbnb_test')
