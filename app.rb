@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require './database_connection_setup'
 require './lib/db_connection'
+require './lib/user'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -36,34 +37,21 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/authenticate' do
-    user = DBConnection.query(
-      "SELECT * FROM users
-       WHERE email='#{params[:email]}';"
-    )
+    user = User.authenticate(params[:email], params[:password])
 
-    hsh = [:id, :name, :email, :password].zip(user.values.flatten).to_h
-    
-    session[:current_user_id] = hsh[:id]
-    session[:current_user_name] = hsh[:name]
-    session[:current_user_email] = hsh[:email]
-
-    puts session
+    session[:current_user_id] = user[:id]
+    session[:current_user_name] = user[:name]
+    session[:current_user_email] = user[:email]
 
     redirect '/'
   end
 
   post '/user/create' do
-    new_user = DBConnection.query(
-      "INSERT INTO users(name, email, password)
-       VALUES('#{params[:name]}', '#{params[:email]}', '#{params[:password]}')
-       RETURNING *;"
-      )
+    new_user = User.create(params[:name], params[:email], params[:password])
 
-      hsh = [:id, :name, :email, :password].zip(new_user.values.flatten).to_h
-
-    session[:current_user_id] = hsh[:id]
-    session[:current_user_name] = hsh[:name]
-    session[:current_user_email] = hsh[:email]
+    session[:current_user_id] = new_user[:id]
+    session[:current_user_name] = new_user[:name]
+    session[:current_user_email] = new_user[:email]
 
     redirect '/'
   end
