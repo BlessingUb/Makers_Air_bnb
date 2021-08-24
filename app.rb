@@ -31,6 +31,19 @@ class MakersBnB < Sinatra::Base
     redirect '/'
   end
 
+  get '/spaces' do
+    @spaces = Spaces.all
+    erb :'spaces/index'
+  end
+
+  get '/spaces/new' do
+    erb :'spaces/new'
+  end
+
+  post '/spaces/new' do
+    Spaces.create(name: params[:name], des: params[:des], price: params[:price])
+    redirect '/spaces'
+  end
   # get '/login' do
   #   erb :login
   # end
