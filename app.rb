@@ -31,6 +31,27 @@ class MakersBnB < Sinatra::Base
     redirect '/'
   end
 
+  # get '/login' do
+  #   erb :login
+  # end
+
+  # post '/authenticate' do
+  #   user = DBConnection.query(
+  #     "SELECT * FROM users
+  #      WHERE email='#{params[:email]}';"
+  #   )
+
+  #   hsh = [:id, :name, :email, :password].zip(user.values.flatten).to_h
+
+  #   puts hsh
+
+  #   session[:current_user_id] = user[:id]
+  #   session[:current_user_name] = user[:name]
+  #   session[:current_user_email] = user[:email]
+
+  #   redirect '/'
+  # end
+
   post '/user/create' do
     new_user = DBConnection.query(
       "INSERT INTO users(name, email, password)
@@ -38,7 +59,7 @@ class MakersBnB < Sinatra::Base
        RETURNING *;"
       )
 
-    hsh = [:id, :name, :email, :password].zip(new_user.values.flatten).to_h
+      hsh = [:id, :name, :email, :password].zip(new_user.values.flatten).to_h
 
     session[:current_user_id] = hsh[:id]
     session[:current_user_name] = hsh[:name]
