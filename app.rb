@@ -31,26 +31,26 @@ class MakersBnB < Sinatra::Base
     redirect '/'
   end
 
-  # get '/login' do
-  #   erb :login
-  # end
+  get '/login' do
+    erb :login
+  end
 
-  # post '/authenticate' do
-  #   user = DBConnection.query(
-  #     "SELECT * FROM users
-  #      WHERE email='#{params[:email]}';"
-  #   )
+  post '/authenticate' do
+    user = DBConnection.query(
+      "SELECT * FROM users
+       WHERE email='#{params[:email]}';"
+    )
 
-  #   hsh = [:id, :name, :email, :password].zip(user.values.flatten).to_h
+    hsh = [:id, :name, :email, :password].zip(user.values.flatten).to_h
+    
+    session[:current_user_id] = hsh[:id]
+    session[:current_user_name] = hsh[:name]
+    session[:current_user_email] = hsh[:email]
 
-  #   puts hsh
+    puts session
 
-  #   session[:current_user_id] = user[:id]
-  #   session[:current_user_name] = user[:name]
-  #   session[:current_user_email] = user[:email]
-
-  #   redirect '/'
-  # end
+    redirect '/'
+  end
 
   post '/user/create' do
     new_user = DBConnection.query(
