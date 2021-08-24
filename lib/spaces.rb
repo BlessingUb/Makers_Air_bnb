@@ -1,3 +1,5 @@
+require_relative 'db_connection'
+
 class Spaces
   attr_reader :id, :name, :des, :price
 
