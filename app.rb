@@ -22,7 +22,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    erb :'spaces/index'
   end
 
   get '/signup' do
