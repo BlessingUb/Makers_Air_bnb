@@ -1,8 +1,29 @@
-<ul>
-  <% @spaces.each do |space| %>
-    <li><%= space.name %></li>
-    <li><%= space.des %></li>
-    <li><%= space.price %> </li>
-  <% end %>
-  <a href="spaces/new"><button> List another Space </button></a>
-</ul>
+<% unless @all_spaces.empty? %>
+
+  <h3>All spaces</h3>
+
+  <ul>
+    <% @all_spaces.each do |space| %>
+      <li><%= space.name %></li>
+      <li><%= space.des %></li>
+      <li><%= space.price %> </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+<% if @current_user_spaces %>
+  <h3>Your spaces</h3>
+
+  <ul>
+    <% @current_user_spaces.each do |space| %>
+      <li><%= space.name %></li>
+      <li><%= space.des %></li>
+      <li><%= space.price %> </li>
+    <% end %>
+  </ul>
+
+<% end %>
+
+<a href="spaces/new">List a Space</a>
+
