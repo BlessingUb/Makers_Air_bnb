@@ -1,17 +1,13 @@
 feature 'Listing spaces' do
   scenario 'A user can add a space' do
-    visit '/'
-    click_button 'List a Space'
+    visit '/spaces'
+    click_on 'List a Space'
 
-    # fill_in("name", with: 'Blessing Apartment')
-    # fill_in("des", with: 'Beautiful three bed house')
-    # fill_in("price", with: '500')
+    fill_in("name", with: 'Blessing Apartment')
+    fill_in("des", with: 'Beautiful three bed house')
+    fill_in("price", with: '500')
 
-    p page
-
-    find('name').set('Blessing Apartment')
-    find('des').set('Beautiful three bed house')
-    find('price').set('500')
+    click_on 'List Space'
 
     expect(page).to have_content('Blessing Apartment')
     expect(page).to have_content('Beautiful three bed house')
