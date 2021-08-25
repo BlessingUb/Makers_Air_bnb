@@ -1,4 +1,4 @@
-require 'db_connection'
+require 'pg'
 
 describe DBConnection do
   describe '.setup' do
