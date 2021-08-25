@@ -1,4 +1,9 @@
-CREATE TABLE spaces(space_id serial PRIMARY KEY, name VARCHAR(140), description VARCHAR(500), price INTEGER, user_id INTEGER,
+CREATE TABLE spaces(
+  space_id SERIAL PRIMARY KEY, 
+  name VARCHAR(140) NOT NULL, 
+  description VARCHAR(500) NOT NULL, 
+  price INTEGER NOT NULL, 
+  user_id INTEGER,
   CONSTRAINT fk_user
     FOREIGN KEY(user_id)
       REFERENCES users(user_id)
