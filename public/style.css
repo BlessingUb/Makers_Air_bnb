@@ -1,0 +1,53 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: black;
+  color: white;
+}
+
+#header-text {
+  font-size: 3em;
+  padding: 1em;
+  flex-basis: 75vw;
+}
+
+#sign-in-info {
+  font-size: 1.2em;
+  padding-right: 2em;
+}
+
+#signin-signup-form {
+  width: 33vw;
+}
+
+#signin-signup-form label, input, h3 {
+  padding: 1em;
+  margin: 1em;
+}
+
+.form-heading {
+  font-size: 1.4em;
+  font-weight: 600;
+  padding: 1em;
+}
+
+.signin-form-field {
+  display: flex;
+  flex-direction: row;
+}
+
+.signin-form-field label {
+  flex-basis: 33%;
+}
+
+.signin-form-field input {
+  flex-basis: 66%;
+}
+
