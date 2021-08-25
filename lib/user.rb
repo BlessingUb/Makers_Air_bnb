@@ -30,8 +30,11 @@ class User
       "SELECT * FROM users
        WHERE email='#{email}';"
     )
+    data = authenticated_user.map{|item| [item["user_id"], item["password"]]}
+    #data = ["user_id", "name", "email", "password"].map{|item| authenticated_user.each { |user| item = user}}
 
-    [:id, :name, :email, :password].zip(authenticated_user.values.flatten).to_h
+    @user = User.new(*data)
+    #[:id, :name, :email, :password].zip(authenticated_user.values.flatten).to_h
   end
 
 
