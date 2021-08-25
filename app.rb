@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
-require './database_connection_setup'
 
+require './database_connection_setup'
 require './lib/db_connection'
 require './lib/user'
 require './lib/spaces'
@@ -19,12 +19,12 @@ class MakersBnB < Sinatra::Base
     @current_user_id = session[:current_user_id]
     @current_user_name = session[:current_user_name]
     @current_user_email = session[:current_user_email]
+    @current_user_spaces = session[:current_user_spaces]
     @all_spaces = Spaces.all
   end
 
   get '/' do
     erb :index
-    
   end
 
   get '/signup' do

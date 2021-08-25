@@ -1,3 +1,5 @@
+<a href="/spaces">Spaces</a>
 
-<a href="/spaces/new"><button>Create a new space</button></a>
-
+<% if @current_user_name %>
+  <a href="/space/new"></a>
+<% end %>
