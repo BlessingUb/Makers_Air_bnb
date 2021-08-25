@@ -19,6 +19,7 @@ class MakersBnB < Sinatra::Base
     @current_user_id = session[:current_user_id]
     @current_user_name = session[:current_user_name]
     @current_user_email = session[:current_user_email]
+    @all_spaces = Spaces.all
   end
 
   get '/' do
@@ -41,7 +42,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @spaces = Spaces.all
+    @all_spaces = Spaces.all
     erb :'spaces/index'
   end
 
