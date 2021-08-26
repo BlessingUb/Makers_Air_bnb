@@ -2,9 +2,9 @@ require './database_connection_setup'
 require './lib/db_connection'
 
 class User
-  attr_reader :name, :email, :password, :id
-  def initialize(id,name,email,password)
-    @id = id
+  attr_reader :name, :email, :password, :user_id
+  def initialize(user_id,name,email,password)
+    @user_id = user_id
     @name = name
     @email = email
     @password = password

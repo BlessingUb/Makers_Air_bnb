@@ -2,10 +2,10 @@ require_relative 'db_connection'
 
 
 class Space
-  attr_reader :id, :name, :description, :price, :user_id
+  attr_reader :space_id, :name, :description, :price, :user_id
 
-  def initialize(id, name, description, price, user_id)
-    @id  = id
+  def initialize(space_id, name, description, price, user_id)
+    @space_id = space_id
     @name = name
     @description = description
     @price = price
