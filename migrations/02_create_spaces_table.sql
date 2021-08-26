@@ -4,7 +4,7 @@ CREATE TABLE spaces(
   description VARCHAR(500) NOT NULL,
   price INTEGER NOT NULL,
   
-  user_id INTEGER,
+  user_id INTEGER NOT NULL,
   CONSTRAINT fk_user
     FOREIGN KEY(user_id)
       REFERENCES users(user_id)
