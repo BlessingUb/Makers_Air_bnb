@@ -36,6 +36,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @all_spaces = Space.all
+    p @all_spaces
     erb :'spaces/index'
   end
 
@@ -44,21 +45,21 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
-    @space = Space.create(params[:name], params[:description], params[:price], @user_id)
+    if @user.logged_in?
+    @space = Space.create(params[:name], params[:description], params[:price])
+    
     redirect '/spaces'
   end
  
 
   post '/authenticate' do
     @user = User.authenticate(params[:email], params[:password])
-    @user_id = @user.user_id
-    p @user_id
     redirect '/spaces'
   end
 
   post '/user/create' do
     @new_user = User.create(params[:name], params[:email], params[:password])
-
+     
     #redirect '/'
     redirect '/login'
     
