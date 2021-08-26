@@ -1,6 +1,5 @@
 require_relative 'db_connection'
 
-
 class Space
   attr_reader :id, :name, :description, :price, :user_id
 
@@ -18,7 +17,7 @@ class Space
 
   def self.all
     result = DBConnection.query("SELECT * FROM spaces")
-    result.map do|space| 
+    result.map do |space| 
       Space.new(space['space_id'], space['name'], space['description'], space['price'], space['user_id'])
     end
   end
