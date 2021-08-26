@@ -16,16 +16,23 @@ describe Spaces do
     end
   end
 
-describe '.create' do
-  it 'creates a new space' do
-    User.create("john", "john@email.com", "Password")
-    spaces = Spaces.create('Tosin Bed & Breakfast', 'Beautiful all in one house', '300', User.current.id)
-    expect(spaces).to be_a Spaces
-    expect(spaces.name).to eq 'Tosin Bed & Breakfast'
-    expect(spaces.description).to eq 'Beautiful all in one house'
-    expect(spaces.price).to eq '300'
-    expect(spaces.id.to_i).to be_a Integer
+  describe '.create' do
+    it 'creates a new space object with required parameters' do
+      User.create("john", "john@email.com", "Password")
+      spaces = Spaces.create('Tosin Bed & Breakfast', 'Beautiful all in one house', '300', User.current.id)
+      expect(spaces).to be_a Spaces
+      expect(spaces.name).to eq 'Tosin Bed & Breakfast'
+      expect(spaces.description).to eq 'Beautiful all in one house'
+      expect(spaces.price).to eq '300'
+      expect(spaces.id.to_i).to be_a Integer
+    end
   end
-end
+
+  describe '.current' do
+    it 'returns the current instance of space class' do
+      user = User.create("john", "john@email.com", "Password")
+      expect(User.current.name).to eq 'john' 
+    end
+  end
 
 end
