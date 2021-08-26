@@ -4,14 +4,14 @@
 
   <ul>
     <% @all_spaces.each do |space| %>
-      <li><%= space.name %></li>
-      <li><%= space.des %></li>
-      <li><%= space.price %> </li>
+      <li><%= @space_name %></li>
+      <li><%= @space_descrption %></li>
+      <li><%= @space_price %> </li>
     <% end %>
   </ul>
 
 <% end %>
-
+<!--
 <% if @user.spaces%>
   <h3>Your spaces</h3>
 
@@ -24,6 +24,6 @@
   </ul>
 
 <% end %>
-
+-->
 <a href="spaces/new">List a Space</a>
 

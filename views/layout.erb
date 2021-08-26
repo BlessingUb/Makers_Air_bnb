@@ -13,9 +13,9 @@
         Makers BnB
       </div>
       <div id="sign-in-info">
-        <% if @user %>
+        <% if @current_user_id %>
           <p>
-            Signed in as <%= @user.name %>
+            Signed in as <%= @current_user_name %>
           </p>
           <a href='/logout'>logout</a>
         <% else %>
