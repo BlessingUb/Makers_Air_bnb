@@ -12,18 +12,7 @@ class MakersBnB < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  enable :sessions
   # set :method_override, true
-
-  before do
-    # @current_user_id = User.current.
-    # @current_user_name = session[:current_user_name]
-    # @current_user_email = session[:current_user_email]
-    # @current_user_spaces = session[:current_user_spaces]
-    # @space_name = session[:space_name]
-    # @space_description = session[:space_description]
-    # @space_price = session[:space_price]
-  end
 
   get '/' do
     erb :index
@@ -46,8 +35,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @all_spaces = Spaces.all
-    p @all_spaces
+    @all_spaces = Space.all
     erb :'spaces/index'
   end
 
@@ -56,7 +44,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
-    @space = Spaces.create(params[:name], params[:description], params[:price], 2)
+    @space = Space.create(params[:name], params[:description], params[:price], 2)
     redirect '/spaces'
   end
  
