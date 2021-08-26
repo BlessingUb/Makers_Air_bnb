@@ -24,8 +24,13 @@ class Space
   end
 
   def self.create(name, description, price, user_id)
+    description = sanitise_string(description)
     result = DBConnection.query("INSERT INTO spaces (name, description, price, user_id) 
     VALUES('#{name}', '#{description}', '#{price}', '#{user_id}') RETURNING space_id, name, description, price, user_id;")
     @space = Space.new(result[0]['space_id'], result[0]['name'], result[0]['description'], result[0]['price'], result[0]['user_id'])
-  end 
+  end
+  
+  def self.sanitise_string(string)
+    string.gsub("'", "''")
+  end
 end
