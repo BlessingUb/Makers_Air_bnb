@@ -23,6 +23,7 @@ class Space
   end
 
   def self.create(name, description, price, user_id)
+    name = sanitise_string(name)
     description = sanitise_string(description)
     result = DBConnection.query("INSERT INTO spaces (name, description, price, user_id) 
     VALUES('#{name}', '#{description}', '#{price}', '#{user_id}') RETURNING space_id, name, description, price, user_id;")
