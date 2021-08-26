@@ -15,8 +15,8 @@ class Booking
   end
 
   def self.all
-    result = DBConnection.query("SELECT * FROM spaces")
-    result.map do|booking| 
+    result = DBConnection.query("SELECT * FROM bookings")
+    result.map do |booking| 
       Booking.new(booking['booking_id'], booking['check_in'],
         booking['check_out'], booking['space_id'])
     end
@@ -28,8 +28,5 @@ class Booking
     
     @booking = Booking.new(result[0]['booking_id'], result[0]['check_in'], result[0]['check_out'], result[0]['space_id'])
   end
-  
-  def self.sanitise_string(string)
-    string.gsub("'", "''")
-  end
+
 end

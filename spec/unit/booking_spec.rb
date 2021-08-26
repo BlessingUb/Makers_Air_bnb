@@ -2,32 +2,36 @@ require 'user'
 require 'booking'
 
 describe Booking do
-  # describe '.all' do
-  #   it 'returns all bookings' do
-  #     User.create("john", "john@example.com", "V3ryS3cur3P4ssw0rd")
-  #     Space.create('Blessing Apartment', 'Beautiful three bedroom house', "500", User.current.id)
+  describe '.all' do
+    it 'returns all bookings' do
+      User.create("john", "john@example.com", "V3ryS3cur3P4ssw0rd")
+      Space.create('Blessing Apartment', 'Beautiful three bedroom house', "500", User.current.id)
       
-  #     check_in = Date.today
-  #     check_out = check_in.next_month
+      check_in = Date.today
+      check_out = check_in.next_month
       
-  #     Booking.create(check_in, check_out, Space.current.id)
-  #     Booking.create(check_out, check_out.next_month, Space.current.id)
+      Booking.create(check_in, check_out, Space.current.id)
+      Booking.create(check_out, check_out.next_month, Space.current.id)
 
-  #     bookings = Booking.all
+      check_in_formatted = check_in.strftime("%Y-%m-%d")
+      check_out_formatted = check_out.strftime("%Y-%m-%d")
+      check_out_next_month_formatted = check_out.next_month.strftime("%Y-%m-%d")
 
-  #     expect(bookings.length).to eq 2
+      bookings = Booking.all
+
+      expect(bookings.length).to eq 2
       
-  #     expect(bookings.first).to be_a booking
-  #     expect(bookings.first.check_in).to eq check_in
-  #     expect(bookings.first.check_out).to eq check_out
-  #     expect(bookings.first.space_id).to eq Space.current.id
+      expect(bookings.first).to be_a Booking
+      expect(bookings.first.check_in).to eq check_in_formatted
+      expect(bookings.first.check_out).to eq check_out_formatted
+      expect(bookings.first.space_id).to eq Space.current.id
 
-  #     expect(bookings.last).to be_a booking
-  #     expect(bookings.last.check_in).to eq check_out
-  #     expect(bookings.last.check_out).to eq check_out.next_month
-  #     expect(bookings.last.space_id).to eq Space.current.id
-  #   end
-  # end
+      expect(bookings.last).to be_a Booking
+      expect(bookings.last.check_in).to eq check_out_formatted
+      expect(bookings.last.check_out).to eq check_out_next_month_formatted
+      expect(bookings.last.space_id).to eq Space.current.id
+    end
+  end
 
   describe '.create' do
     it 'creates a new booking object with required parameters' do
