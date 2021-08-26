@@ -16,13 +16,13 @@ class MakersBnB < Sinatra::Base
   # set :method_override, true
 
   before do
-    @current_user_id = session[:current_user_id]
-    @current_user_name = session[:current_user_name]
-    @current_user_email = session[:current_user_email]
-    @current_user_spaces = session[:current_user_spaces]
-    @space_name = session[:space_name]
-    @space_description = session[:space_description]
-    @space_price = session[:space_price]
+    # @current_user_id = User.current.
+    # @current_user_name = session[:current_user_name]
+    # @current_user_email = session[:current_user_email]
+    # @current_user_spaces = session[:current_user_spaces]
+    # @space_name = session[:space_name]
+    # @space_description = session[:space_description]
+    # @space_price = session[:space_price]
   end
 
   get '/' do
@@ -56,29 +56,18 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/new' do
-    space = Spaces.create(params[:name], params[:des], params[:price])
-    session[:space_name] = space[:name]
-    session[:spec_description] = space[:des]
-    session[:space_price] = space[:price]
+    @space = Spaces.create(params[:name], params[:description], params[:price], 2)
     redirect '/spaces'
   end
  
 
   post '/authenticate' do
-    user = User.authenticate(params[:email], params[:password])
-
-    session[:current_user_id] = user[:id]
-    session[:current_user_name] = user[:name]
-    session[:current_user_email] = user[:email]
+    @user = User.authenticate(params[:email], params[:password])
     redirect '/spaces'
   end
 
   post '/user/create' do
-    new_user = User.create(params[:name], params[:email], params[:password])
-
-    session[:current_user_id] = new_user[:id]
-    session[:current_user_name] = new_user[:name]
-    session[:current_user_email] = new_user[:email]
+    @new_user = User.create(params[:name], params[:email], params[:password])
 
     #redirect '/'
     redirect '/spaces'
