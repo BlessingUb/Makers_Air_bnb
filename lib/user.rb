@@ -9,9 +9,11 @@ class User
     @email = email
     @password = password
   end
-  def self.instance
+
+  def self.current
     @user
   end
+  
   def self.create(name, email, password)
     new_user = DBConnection.query(
       "INSERT INTO users(name, email, password)
