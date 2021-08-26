@@ -4,9 +4,9 @@
 
   <ul>
     <% @all_spaces.each do |space| %>
-      <li><%= @space_name %></li>
-      <li><%= @space_descrption %></li>
-      <li><%= @space_price %> </li>
+      <li><%= space.current.name %></li>
+      <li><%= space.current.description %></li>
+      <li><%= space.current.price %> </li>
     <% end %>
   </ul>
 
