@@ -9,3 +9,4 @@ CREATE TABLE bookings(
       REFERENCES spaces(space_id)
       ON DELETE CASCADE
       );
+      
