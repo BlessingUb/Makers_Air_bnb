@@ -58,7 +58,7 @@ class MakersBnB < Sinatra::Base
     @new_user = User.create(params[:name], params[:email], params[:password])
 
     #redirect '/'
-    redirect '/spaces'
+    redirect '/login'
     
   end
 
