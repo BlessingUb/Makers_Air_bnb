@@ -6,12 +6,12 @@
 
     <div class="signin-form-field">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email">
+      <input type="email" id="email" name="email" required maxlength="60">
     </div>
 
     <div class="signin-form-field">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password">
+      <input type="password" id="password" name="password" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" minlength="6" maxlength="80">
     </div>
 
     <div class="signin-form-field">
