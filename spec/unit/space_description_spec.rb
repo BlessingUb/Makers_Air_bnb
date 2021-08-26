@@ -1,7 +1,6 @@
 require 'space'
 
 describe Space do
-
   it 'will allow apostrophes in the description' do
     User.create("Blessing", "b@b.com", "p@ssw0rD")
     Space.create("Name", "Blessing's Apartment", "500", User.current.id)
@@ -12,6 +11,5 @@ describe Space do
     User.create("Blessing", "b@b.com", "p@ssw0rD")
     Space.create("Name", "@€£#$%^&*()_={}[]|:<>.,", "500", User.current.id)
     expect(Space.current.description).to eq "@€£#$%^&*()_={}[]|:<>.,"
-  end
-  
+  end 
 end
