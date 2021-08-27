@@ -18,7 +18,6 @@ class MakersBnB < Sinatra::Base
     @user = User.current
     @space = Space.current
     @spaces = Space.all
-    @logout = User.logout
   end
 
   get '/' do
@@ -30,10 +29,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/logout' do
-    @logout.clear
-    p User.current.id
+    @user.logout
     redirect '/'
-    
   end
 
   get '/login' do

@@ -2,7 +2,7 @@ require './database_connection_setup'
 require './lib/db_connection'
 
 class User
-  attr_reader :name, :email, :password, :id
+  attr_accessor :name, :email, :password, :id
   def initialize(id,name,email,password)
     @id = id
     @name = name
@@ -13,8 +13,12 @@ class User
   def self.current
     @user
   end
-  def self.logout
-    @user == nil
+
+  def logout
+    self.id = nil
+    self.name = nil
+    self.email = nil
+    self.password = nil
   end
   
   def self.create(name, email, password)

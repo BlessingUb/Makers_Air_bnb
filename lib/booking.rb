@@ -28,5 +28,4 @@ class Booking
     
     @booking = Booking.new(result[0]['booking_id'], result[0]['check_in'], result[0]['check_out'], result[0]['space_id'])
   end
-
 end
