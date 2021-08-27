@@ -1,45 +1,22 @@
-<!— <% unless @spaces.empty? %>
-  <h3>All spaces</h3>
+<% unless @spaces.empty? %>
+  <div class="spaces-list">
+    <div class="space-list-heading">All spaces</div>
     <% @spaces.each do |space| %>
-      <li><%= space.name %></li>
-      <li><%= space.description %></li>
-      <li><%= space.price %> </li>
-      <li><a href="/booking/new/<%= space.id %>">Book this space</a></li>
+      <div class="space-card">
+        <div class="space-name"><%= space.name %></div>
+        <div class="space-description"><%= space.description %></div>
+        <div class="space-price">£<%= space.price %> </div>
+        <div class="booking-link"><a href="/booking/new/<%= space.id %>">Book this space</a></div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% end %>
 
-<% unless @user_owned_spaces.empty? %>
   <h3>Spaces I own</h3>
   <%= @user_owned_spaces %>
-<% end %>
 
-<% unless @user_bookings.empty? %>
+
   <h3>My bookings</h3>
   <%= @user_bookings %>
-<% end %>
 
-<a href="spaces/new">List a Space</a>
-
--->
-
-  <% unless @spaces.empty? %>
-
-    <h3>All spaces</h3>
-    
-    
-      <% @spaces.each do |space| %>
-        <ul>
-        <li style='list-style: none;'><b><%= space.name %></b>
-          <ul>
-          <li style='list-style: none; margin-left:-15px;'><%= space.description %></li>
-          <li style='list-style: none; margin-left:-15px;'><%= space.price %> </li>
-          </ul>
-        </li>
-      </ul>
-      <% end %>
-    
-
-    <% end %>
-
-  <a href="spaces/new">List a Space</a>
+<div class="list-new-space-link"><a href="spaces/new">List a Space</a></div>

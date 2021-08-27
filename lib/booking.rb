@@ -33,6 +33,10 @@ class Booking
   end
 
   def self.by_user(user_id)
-    self.all.select { |booking| booking.user_id == user_id }
+    result = DBConnection.query("SELECT * FROM bookings WHERE user_id = #{user_id};")
+    result.map do |booking| 
+      Booking.new(booking['booking_id'], booking['check_in'],
+        booking['check_out'], booking['space_id'], booking['user_id'])
+    end
   end
 end
