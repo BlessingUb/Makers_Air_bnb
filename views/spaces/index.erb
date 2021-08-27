@@ -1,8 +1,7 @@
-<% if @user.user_id = @space.user_id %>
+<% if @user_id == @space_user_id %>
 <% unless @all_spaces.empty? %>
 
-
-  <h3>All your spaces</h3>
+  <h3>All spaces</h3>
 
     <% @all_spaces.each do |space| %>
 
@@ -12,6 +11,7 @@
     <% end %>
   </ul>
 
-  <% end %>
-
-<a href="spaces/new">List a Space</a>
+<% end %>
+<%end%>
+<a href="spaces/n
+ew">List a Space</a>

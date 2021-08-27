@@ -32,5 +32,10 @@ class User
     data = ["user_id", "name", "email", "password"].map{|item| authenticated_user[0][item]}
     @user = User.new(*data)
   end
+  def self.logged_in?
+    if User.authenticate(email, password)
+      return true
+    end
+  end
 
 end
