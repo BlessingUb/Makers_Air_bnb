@@ -3,9 +3,14 @@
   <h3>All spaces</h3>
 
     <% @spaces.each do |space| %>
-      <li><%= space.name %></li>
-      <li><%= space.description %></li>
-      <li><%= space.price %> </li>
+      <ul>
+      <li><b><%= space.name %></b>
+        <ul>
+        <li><%= space.description %></li>
+        <li><%= space.price %> </li>
+        </ul>
+      </li>
+     </ul> 
     <% end %>
   </ul>
 
