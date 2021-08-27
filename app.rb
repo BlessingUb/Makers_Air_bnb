@@ -59,8 +59,15 @@ class MakersBnB < Sinatra::Base
 
     #redirect '/'
     redirect '/spaces'
-    
   end
+
+  get '/booking/new/:space_id' do
+    @space = Space.with_id(:space_id)
+    
+    erb :'booking/new'
+  end
+
+
 
   run! if app_file == $0
 end

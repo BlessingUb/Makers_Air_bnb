@@ -1,0 +1,21 @@
+<div>
+  <form action="/booking/create/<%= @space.id %>" method="post" id="booking-form">
+    <div class="form-heading">
+      Book <%= @space.name %>
+    </div>
+
+    <div class="booking-form-field">
+      <label for="check-in">Check In</label>
+      <input type="date" id="check-in" name="check-in">
+    </div>
+
+    <div class="booking-form-field">
+      <label for="check-out">Check Out</label>
+      <input type="date" id="check-out" name="check-out">
+    </div>
+
+    <div class="booking-form-field">
+      <input type="submit" value="submit" class="booking-submit">
+    </div>
+  </form>
+</div>
