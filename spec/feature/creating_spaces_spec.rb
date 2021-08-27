@@ -1,15 +1,10 @@
 feature 'Listing spaces' do
-  scenario 'A user can add a space' do
-    visit '/spaces'
-    click_on 'List a Space'
-
-    fill_in("name", with: 'Blessing Apartment')
-    fill_in("des", with: 'Beautiful three bed house')
-    fill_in("price", with: '500')
-
-    click_on 'List Space'
-
-    expect(page).to have_content('Blessing Apartment')
+  scenario 'can list space with name, description and price' do
+    create_new_user("test", "test@example.com", "p455word")
+    list_a_space
+    expect(page).to have_content('Apartment')
     expect(page).to have_content('Beautiful three bed house')
+    expect(page).to have_content('500')
+    click_on 'logout'
   end
 end

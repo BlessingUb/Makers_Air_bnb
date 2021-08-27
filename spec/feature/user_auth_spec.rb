@@ -10,6 +10,7 @@ feature 'user authentication process' do
     create_new_user(name, email, password)
 
     expect(page).to have_content "Signed in as #{name}"
+    click_on 'logout'
   end
 
   scenario 'allows an existing user to log in' do
@@ -20,6 +21,7 @@ feature 'user authentication process' do
     sign_in_as_user(email, password)
 
     expect(page).to have_content "Signed in as #{name}"
+    click_on 'logout'
   end
 
   scenario 'allows a signed in user to log out' do
