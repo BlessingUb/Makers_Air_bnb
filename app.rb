@@ -39,8 +39,10 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
-    @user_owned_spaces = Space.of_user(User.current)
-    @user_bookings = Booking.by_user(User.current)
+    if User.current
+      @user_owned_spaces = Space.of_user(User.current.id)
+      @user_bookings = Booking.by_user(User.current.id)
+    end
     erb :'spaces/index'
   end
 
