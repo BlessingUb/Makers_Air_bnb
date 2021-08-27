@@ -2,9 +2,10 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 
 require './database_connection_setup'
+require './lib/booking'
 require './lib/db_connection'
-require './lib/user'
 require './lib/space'
+require './lib/user'
 
 
 class MakersBnB < Sinatra::Base
@@ -39,6 +40,8 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces' do
+    @user_owned_spaces = Space.of_user(User.current)
+    @user_bookings = Booking.by_user(User.current)
     erb :'spaces/index'
   end
 
@@ -47,7 +50,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/create' do
-    Space.create(params[:name], params[:description], params[:price], User.current.id)
+    Space.create(params[:name], params[:description],
+      params[:price], User.current.id)
     
     redirect '/spaces'
   end
@@ -71,7 +75,8 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/booking/create/:space_id' do
-    Booking.create(params[:checkin], params[:checkout], params[:space_id])
+    Booking.create(params[:checkin], params[:checkout],
+      params[:space_id], User.current.id)
 
     redirect '/spaces'
   end

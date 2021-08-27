@@ -1,3 +1,28 @@
+<!— <% unless @spaces.empty? %>
+  <h3>All spaces</h3>
+    <% @spaces.each do |space| %>
+      <li><%= space.name %></li>
+      <li><%= space.description %></li>
+      <li><%= space.price %> </li>
+      <li><a href="/booking/new/<%= space.id %>">Book this space</a></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @user_owned_spaces.empty? %>
+  <h3>Spaces I own</h3>
+  <%= @user_owned_spaces %>
+<% end %>
+
+<% unless @user_bookings.empty? %>
+  <h3>My bookings</h3>
+  <%= @user_bookings %>
+<% end %>
+
+<a href="spaces/new">List a Space</a>
+
+-->
+
   <% unless @spaces.empty? %>
 
     <h3>All spaces</h3>
