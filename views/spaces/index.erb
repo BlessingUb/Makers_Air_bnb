@@ -1,19 +1,20 @@
-<% unless @spaces.empty? %>
+  <% unless @spaces.empty? %>
 
-  <h3>All spaces</h3>
-
-    <% @spaces.each do |space| %>
-      <ul>
-      <li><b><%= space.name %></b>
+    <h3>All spaces</h3>
+    
+    
+      <% @spaces.each do |space| %>
         <ul>
-        <li><%= space.description %></li>
-        <li><%= space.price %> </li>
-        </ul>
-      </li>
-     </ul> 
+        <li style='list-style: none;'><b><%= space.name %></b>
+          <ul>
+          <li style='list-style: none; margin-left:-15px;'><%= space.description %></li>
+          <li style='list-style: none; margin-left:-15px;'><%= space.price %> </li>
+          </ul>
+        </li>
+      </ul>
+      <% end %>
+    
+
     <% end %>
-  </ul>
 
-  <% end %>
-
-<a href="spaces/new">List a Space</a>
+  <a href="spaces/new">List a Space</a>
