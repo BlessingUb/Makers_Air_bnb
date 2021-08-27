@@ -48,7 +48,6 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
  
-
   post '/authenticate' do
     @user = User.authenticate(params[:email], params[:password])
     redirect '/spaces'
@@ -63,8 +62,14 @@ class MakersBnB < Sinatra::Base
 
   get '/booking/new/:space_id' do
     @space = Space.with_id(:space_id)
-    
+
     erb :'booking/new'
+  end
+
+  post '/booking/create/:space_id' do
+    Booking.create(params[:checkin], params[:checkout], params[:space_id])
+
+    redirect '/'
   end
 
 
