@@ -6,12 +6,13 @@ describe Booking do
     it 'returns all bookings' do
       User.create("john", "john@example.com", "V3ryS3cur3P4ssw0rd")
       Space.create('Blessing Apartment', 'Beautiful three bedroom house', "500", User.current.id)
+      User.create("jane", "jane@example.com", "V3ryS3cur3P4ssw0rd")
       
       check_in = Date.today
       check_out = check_in.next_month
       
-      Booking.create(check_in, check_out, Space.current.id)
-      Booking.create(check_out, check_out.next_month, Space.current.id)
+      Booking.create(check_in, check_out, Space.current.id, User.current.id)
+      Booking.create(check_out, check_out.next_month, Space.current.id, User.current.id)
 
       check_in_formatted = check_in.strftime("%Y-%m-%d")
       check_out_formatted = check_out.strftime("%Y-%m-%d")
@@ -40,7 +41,9 @@ describe Booking do
       
       User.create("john", "john@example.com", "V3ryS3cur3P4ssw0rd")
       Space.create('Blessing Apartment', 'Beautiful three bedroom house', "500", User.current.id)
-      Booking.create(check_in, check_out, Space.current.id)
+      User.create("jane", "jane@example.com", "V3ryS3cur3P4ssw0rd")
+      
+      Booking.create(check_in, check_out, Space.current.id, User.current.id)
 
       check_in_formatted = check_in.strftime("%Y-%m-%d")
       check_out_formatted = check_out.strftime("%Y-%m-%d")
@@ -58,7 +61,8 @@ describe Booking do
       
       User.create("john", "john@example.com", "V3ryS3cur3P4ssw0rd")
       Space.create('Blessing Apartment', 'Beautiful three bedroom house', "500", User.current.id)
-      Booking.create(check_in, check_out, Space.current.id)
+      User.create("jane", "jane@example.com", "V3ryS3cur3P4ssw0rd")
+      Booking.create(check_in, check_out, Space.current.id, User.current.id)
 
       expect(Booking.current).to be_a Booking
     end

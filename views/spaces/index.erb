@@ -1,14 +1,11 @@
 <% unless @spaces.empty? %>
-
   <h3>All spaces</h3>
-
     <% @spaces.each do |space| %>
       <li><%= space.name %></li>
       <li><%= space.description %></li>
       <li><%= space.price %> </li>
     <% end %>
   </ul>
-
   <% end %>
 
 <a href="spaces/new">List a Space</a>
