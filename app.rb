@@ -34,7 +34,6 @@ class MakersBnB < Sinatra::Base
     redirect '/'
   end
 
-
   get '/login' do
     erb :login 
   end
