@@ -30,8 +30,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/logout' do
-    session.clear
-
+    @user.logout
     redirect '/'
   end
 
