@@ -13,6 +13,9 @@ class User
   def self.current
     @user
   end
+  def self.logout
+    @user == nil
+  end
   
   def self.create(name, email, password)
     new_user = DBConnection.query(
