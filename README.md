@@ -88,5 +88,5 @@ I can still be booked
 2. Connect to `psql` via the Terminal
 3. Create the development and test databases using the psql commands `CREATE DATABASE makersbnb;` and `CREATE DATABASE makersbnb_test;`
 4. Connect to the development database using the pqsl command `\c makers_bnb;`
-5. Run the queries saved in the files `01_create_users_table.sql` and `02_create_space_table.sql`
+5. Run the queries saved in the files `01_create_users_table.sql`, `02_create_spaces_table.sql` and `03_create_bookings_table.sql`
 6. Repeat step 5 after connecting to the test database: `\c makersbnb_test;`
